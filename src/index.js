@@ -16,5 +16,4 @@ function verificaPalavrasDuplicadas (texto) {
         resultado[palavra] = (resultado[palavra] || 0) + 1
     });
     console.log(resultado)
-    console.log(resultado)
 }
