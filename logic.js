@@ -1,13 +1,10 @@
-const tarefas = ['correr', 'malhar', 'jogar']
-
-function executarTarefas (tarefas, callback){
-    for (let i = 0; i < tarefas.length; i++){
-        callback(tarefas[i])
+function processarNumeros (numeros, callback) {
+    for (let i = 0; i < numeros.length; i++){
+        callback(numeros[i])
     }
 }
 
-function mostrarTarefa(tarefas){
-    console.log(`Executando tarefa: ${tarefas}`);
-}
-
-executarTarefas(tarefas,mostrarTarefa)
+processarNumeros([10,20,30], (numero) => {
+    console.log(`O dobro de ${numero} é ${numero * 2}`);
+    
+})
