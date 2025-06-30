@@ -1,2 +1,10 @@
-const somaNumeros = arr => arr.reduce((soma, atual) => soma + atual, 0)
-console.log(somaNumeros([1,2,3,4,5,6]));
+function recursividade (num){
+    if (num === 0) {
+        return 0
+    }
+    else {
+        return num + recursividade(num - 1)  //
+    } 
+}
+
+console.log(recursividade(4));
