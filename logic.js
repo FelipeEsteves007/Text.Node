@@ -9,10 +9,10 @@ function maiorMenor (arr){
     let menor = arr[0]
 
     for (let i = 0; i < arr.length; i++){
-        if (maior > arr[i]){
+        if ( arr[i] > maior){
             maior = arr[i] 
         }
-        if (menor < arr[i]){
+        if (arr[i] < menor ){
             menor = arr[i] 
         }
     }
