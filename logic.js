@@ -1,3 +1,21 @@
-const arr = [0,2,6,7,9,15]
-const filtrarPares = arr => arr.filter(num => num % 2 === 0)
-console.log(filtrarPares(arr));
+const arr = [4, 9, 2, 1]
+
+function maiorMenor (arr){
+    if ( arr.length === 0){
+        return {maior: null, menor: null}
+    }
+
+    let maior = arr[0]
+    let menor = arr[0]
+
+    for (let i = 0; i < arr.length; i++){
+        if (maior > arr[i]){
+            maior = arr[i] 
+        }
+        if (menor < arr[i]){
+            menor = arr[i] 
+        }
+    }
+    return {maior: maior, menor: menor}
+}
+console.log(maiorMenor(arr));
