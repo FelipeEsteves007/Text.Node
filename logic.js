@@ -1,21 +1,11 @@
-const arr = [4, 9, 2, 1]
+const tarefas = ['correr', 'jogar', 'brincar']
 
-function maiorMenor (arr){
-    if ( arr.length === 0){
-        return {maior: null, menor: null}
+const  executarTarefas = (tarefas, callback) => {
+     for (let i = 0; i < tarefas.length; i++){
+        callback(tarefas[i])
     }
-
-    let maior = arr[0]
-    let menor = arr[0]
-
-    for (let i = 0; i < arr.length; i++){
-        if ( arr[i] > maior){
-            maior = arr[i] 
-        }
-        if (arr[i] < menor ){
-            menor = arr[i] 
-        }
-    }
-    return {maior: maior, menor: menor}
 }
-console.log(maiorMenor(arr));
+
+const mostrarTarefa = tarefas => console.log(`Executando tarefa: ${tarefas}`);
+
+executarTarefas(tarefas,mostrarTarefa)
