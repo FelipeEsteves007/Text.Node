@@ -1,10 +1,9 @@
-function recursividade (num){
-    if (num === 0) {
-        return 0
+const arr = [10, 20, 30]
+
+function processarNumeros (arr, callback){
+    for (let i = 0; i < arr.length; i++){
+        callback(arr[i])
     }
-    else {
-        return num + recursividade(num - 1)  //
-    } 
 }
 
-console.log(recursividade(4));
+processarNumeros(arr, numero => console.log(`O dobro de ${numero} é ${numero * 2}`))
