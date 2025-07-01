@@ -1,23 +1,20 @@
-const fs = require('fs');  // carrega a ferramenta de leitura de arquivos
+const fs = require('fs');
+const tratarErros = require('./Erros/funcoesErro')
 
-const caminhoArquivo = process.argv; // pega o nome do arquivo digitado no terminal
-const link = caminhoArquivo[2]; 
+const caminhoArquivo = process.argv;
+const link = caminhoArquivo[2];
 
 fs.readFile(link, 'utf-8', (erro, texto) => {
-  quebraEmParagragos(texto)
-  //verificaPalavrasDuplicas(texto)
+  try {
+    if (erro) throw erro 
+    contaPalavras(texto)
+  } catch (erro) {
+    tratarErros(erro)
+  }
 });
 
-// criar um arr de palavras
-// contador se a palavra é duplicada
-// objeto com o resultado
-{/*{
-  'web' = 5;
-}
-*/}
-
-function quebraEmParagragos (texto){
-  const paragrafos = texto.toLowerCase().split('\n')
+function contaPalavras(texto) {
+  const paragrafos = extraiParagrafos(texto)
   const contagem = paragrafos.flatMap((paragrafo) => {
     if (!paragrafo) return []
     return verificaPalavrasDuplicas(paragrafo)
@@ -25,18 +22,26 @@ function quebraEmParagragos (texto){
   console.log(contagem);
 }
 
-function limpaPalavras (palavra){
-  return palavra.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '') // expressão regular (padrões em texto)
+function extraiParagrafos(texto) {
+  return texto.toLowerCase().split('\n')
 }
 
-function verificaPalavrasDuplicas (texto){
+function quebraEmParagragos(texto) {
+
+}
+
+function limpaPalavras(palavra) {
+  return palavra.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
+}
+
+function verificaPalavrasDuplicas(texto) {
   const listaPalavras = texto.split(' ')
   const resultado = {}
-  //objeto[propriedade] = valor
+
   listaPalavras.forEach(palavra => {
-    if (palavra.length >= 3){
+    if (palavra.length >= 3) {
       const palavraLimpar = limpaPalavras(palavra)
-    resultado[palavraLimpar] = (resultado[palavraLimpar] || 0) + 1
+      resultado[palavraLimpar] = (resultado[palavraLimpar] || 0) + 1
     }
   });
   return resultado
